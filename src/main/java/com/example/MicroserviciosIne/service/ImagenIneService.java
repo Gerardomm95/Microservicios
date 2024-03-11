@@ -1,6 +1,7 @@
 package com.example.MicroserviciosIne.service;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,11 @@ public class ImagenIneService implements IImagenIneService {
 	
 	public String SubirImagen(MultipartFile frente, MultipartFile reverso, MultipartFile selfi) {
 		
+		String format = "dd-MM-yyyy";
+		SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+		String fecha = dateFormat.format(LocalDate.now());
 		try {
-			ImagenIne imagen = new ImagenIne("12",frente.getBytes(),reverso.getBytes(),selfi.getBytes(),LocalDate.now());
+			ImagenIne imagen = new ImagenIne(frente.getBytes(),reverso.getBytes(),selfi.getBytes(),fecha);
 			imagen = imagenIneRepository.save(imagen);
 			if(imagen.getId() != null) {
 				return "Archivos subidos exitosamente";
