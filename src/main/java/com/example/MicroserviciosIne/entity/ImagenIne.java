@@ -1,20 +1,21 @@
 package com.example.MicroserviciosIne.entity;
 
-import java.time.LocalDate;
+import java.util.UUID;
+
+import org.hibernate.annotations.UuidGenerator;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
-import lombok.Builder;
 
 @Entity
 @Table(name = "imagenIne")
-@Builder
 public class ImagenIne {
 	
 	@Id
-	private String id;
+	@UuidGenerator	
+	private UUID id;
 	
 	@Lob
 	private byte[] frente;
@@ -25,21 +26,20 @@ public class ImagenIne {
 	@Lob
 	private byte[] selfi;
 	
-	private LocalDate fechaSubida;
+	private String fechaSubida;
 	
-	public ImagenIne(String id, byte[] frente, byte[] reverso, byte[] selfi, LocalDate fechaSubida) {
-		this.id = id;
+	public ImagenIne(byte[] frente, byte[] reverso, byte[] selfi, String fechaSubida) {
 		this.frente = frente;
 		this.reverso = reverso;
 		this.selfi = selfi;
 		this.fechaSubida = fechaSubida;
 	}
 
-	public String getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
@@ -67,11 +67,11 @@ public class ImagenIne {
 		this.selfi = selfi;
 	}
 
-	public LocalDate getFechaSubida() {
+	public String getFechaSubida() {
 		return fechaSubida;
 	}
 
-	public void setFechaSubida(LocalDate fechaSubida) {
+	public void setFechaSubida(String fechaSubida) {
 		this.fechaSubida = fechaSubida;
 	}
 
