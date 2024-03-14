@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
+
 import org.springframework.stereotype.Service;
 
 import com.example.MicroserviciosIne.domain.model.ImagenIne;
@@ -38,10 +39,21 @@ public class ImagenIneService implements IImagenIneService {
 
 	}
 
-	@Override
-	public boolean ValidarExistencia(Integer id) {
-		// TODO Auto-generated method stub
-		return false;
+	
+	public boolean ValidarExistencia(UUID id) {
+		if(imagenIneRepository.buscarPorIdUsuario(id)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public String ValidarNombreArchivo(String nombre) {
+		if(!nombre.endsWith(".jpg")) {
+			return "Formato de imagen no valido";
+		}
+		return "Formato valido";
 	}
 
 }

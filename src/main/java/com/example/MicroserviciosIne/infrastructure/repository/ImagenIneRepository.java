@@ -18,9 +18,9 @@ public class ImagenIneRepository implements IImagenIneRepository {
 	}
 
 	@Override
-	public Optional<ImagenIne> buscarPorIdUsuario(UUID uuid) {
+	public boolean buscarPorIdUsuario(UUID uuid) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return Optional.empty() != null;
 	}
 
 }

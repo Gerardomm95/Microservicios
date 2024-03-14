@@ -1,6 +1,5 @@
 package com.example.MicroserviciosIne.domain.repository;
 
-import java.util.Optional;
 import java.util.UUID;
 
 import com.example.MicroserviciosIne.domain.model.ImagenIne;
@@ -19,6 +18,6 @@ public interface IImagenIneRepository {
 	 * @param uuid id
 	 * @return imagen
 	 */
-	Optional<ImagenIne> buscarPorIdUsuario(UUID uuid);
+	boolean buscarPorIdUsuario(UUID uuid);
 
 }
